@@ -1,6 +1,6 @@
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 var quotes = [
@@ -31,8 +31,8 @@ var quotes = [
     {quote:"To succeed in life, you need three things: a wishbone, a backbone, and a funny bone." ,
     source: "Reba McEntire",
     citation: null ,
-    year: null
-    tag: "inspirational" ,"humor"},
+    year: null,
+    tag: "inspirational"},
 
     {quote:"Only the mediocre are always at their best." ,
     source: "Jean Giraudoux",
@@ -46,3 +46,10 @@ var quotes = [
     year: null,
     tag: "humor" }
 ];
+
+function getRandomQuote(){
+  for (var i = 0; i < quotes.length; i++) {
+    console.log(quotes[i]);
+  }
+}
+getRandomQuote();
