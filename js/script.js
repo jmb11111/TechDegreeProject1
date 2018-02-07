@@ -1,7 +1,7 @@
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
+var message='';
+var quote;
 
 var quotes = [
     {quote:"I'm sorry, if you were right, I'd agree with you." ,
@@ -47,9 +47,21 @@ var quotes = [
     tag: "humor" }
 ];
 
+
+//This function gets a rancom number for the index of the quote and returns a random object from the array.
+
 function getRandomQuote(){
-  for (var i = 0; i < quotes.length; i++) {
-    console.log(quotes[i]);
+    return quotes[Math.floor((Math.random() * quotes.length) - 1)];
   }
+//This needs to take the information from getRandomQuote and format it in HTML
+function printQuote(getRandomQuote){
+    quote = getRandomQuote;
+    var report = '<p class="quote">' + quote.quote + '</p>'
+        report += '<p class="source">'+ quote.source + '</p>';
+    if (quote.citation) report+= '<span class="citation">'+ quote.citation + '</span>';
+    if (quote.year) report+= '<span class="year">'+ quote.year + '</span>';
+    document.getElementById('quote-box').innerHTML=report;
 }
-getRandomQuote();
+
+document.getElementById('loadQuote').addEventListener("click", function(){printQuote(getRandomQuote())});
+printQuote(getRandomQuote());
