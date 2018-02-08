@@ -1,6 +1,6 @@
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
-var message='';
+document.getElementById('loadQuote').addEventListener("click", printQuote);
 var quote;
 
 var quotes = [
@@ -53,15 +53,24 @@ var quotes = [
 function getRandomQuote(){
     return quotes[Math.floor((Math.random() * quotes.length) - 1)];
   }
-//This needs to take the information from getRandomQuote and format it in HTML
-function printQuote(getRandomQuote){
-    quote = getRandomQuote;
+//This takes the information from getRandomQuote and formats it in HTML
+function printQuote(){
+    quote = getRandomQuote();
     var report = '<p class="quote">' + quote.quote + '</p>'
-        report += '<p class="source">'+ quote.source + '</p>';
+        report += '<p class="source">'+ quote.source;
     if (quote.citation) report+= '<span class="citation">'+ quote.citation + '</span>';
     if (quote.year) report+= '<span class="year">'+ quote.year + '</span>';
+        report += '</p>';
     document.getElementById('quote-box').innerHTML=report;
+    document.body.style.backgroundColor = getRandomColor();
+}
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
-document.getElementById('loadQuote').addEventListener("click", function(){printQuote(getRandomQuote())});
 printQuote(getRandomQuote());
