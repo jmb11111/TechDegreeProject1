@@ -63,6 +63,7 @@ function printQuote(){
         report += '</p>';
     document.getElementById('quote-box').innerHTML=report;
     document.body.style.backgroundColor = getRandomColor();
+    setInterval(function(){ printQuote(); }, 3000);
 }
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
