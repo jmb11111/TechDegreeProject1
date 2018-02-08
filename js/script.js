@@ -62,9 +62,10 @@ function printQuote(){
     if (quote.year) report+= '<span class="year">'+ quote.year + '</span>';
         report += '</p>';
     document.getElementById('quote-box').innerHTML=report;
-    document.body.style.backgroundColor = getRandomColor();
-    setInterval(function(){ printQuote(); }, 3000);
+    document.body.style.backgroundColor = getRandomColor();//This changes the color of the background every time the quote changes
+    setInterval(function(){ printQuote(); }, 30000);//This automatically changes the quote every 30 seconds
 }
+//This generates a random color
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
